@@ -1,3 +1,29 @@
 SSLstrip is an attack focused on bypassing TLS/SSL.
 
-It was introduced in 2009 at Blackhat by Moxie Marlinspike.
+A little background ---
+
+SSLSniff
+
+A certificate chain is usually considered to be a valid certificate chain
+if the chain is closed at the end by a root CA or trusted CA. An issue
+arises when you control the leaf node. If you control the leaf node,
+you can generate illegitimite certificates for websites which you do not
+own. Then, the chain is just 1 block longer, and it still ends at the 
+trusted, root CA. This means that the chain is still valid (to many
+implementations), even though it is not.
+
+Microsoft says that this is not actually an issue, and Moxie releases
+his code that exploits the vuln. This exploit is called SSLSniff
+
+--- end background info
+
+Onto the real stuff...
+
+So most users only encounter an 'HTTPS' page under two circumstances:
+    1. They click on a link, or button, that links to an HTTPS page.
+    2. They get 302'ed (redirect) to another page. This usually happens
+        when a user tries to establish an unencrypted session (HTTP) and 
+        the website responds with: "Hey, use this HTTPS link instead".
+
+So. Given that we know users are almost always going through HTTP to get 
+    to HTTPS, we can just start by attacking HTTP in the first place.
