@@ -1,4 +1,4 @@
-SSLstrip is an attack focused on bypassing TLS/SSL.
+SSLstrip is an attack on HTTPS.
 
 A little background ---
 
