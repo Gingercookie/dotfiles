@@ -65,9 +65,12 @@ vnoremap <leader>/ :TComment<cr>
 " Telescope maps
 nnoremap <leader>gg <cmd>Telescope buffers<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fd <cmd>:Telescope file_browser path=%:p:h<cr>
-nnoremap <leader>fa :lua require('telescope.builtin').find_files({hidden = true})<CR>
-nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
+nnoremap <leader>fd <cmd>Telescope file_browser path=%:p:h<cr>
+nnoremap <leader>fa <cmd>Telescope find_files hidden=true<cr>
+nnoremap <C-p> <cmd>Telescope git_files<cr>
+
+" NerdTree maps
+nnoremap <leader>n <cmd>NERDTree<cr>
 
 " Set filetype for Jenkinsfiles
 au BufRead,BufNewFile Jenkinsfile setf groovy
