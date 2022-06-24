@@ -22,6 +22,7 @@ set mouse=nvi
 call plug#begin('~/.vim/plugged')
 
 " Utility plugins
+Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/nerdtree'
@@ -65,12 +66,13 @@ vnoremap <leader>/ :TComment<cr>
 " Telescope maps
 nnoremap <leader>gg <cmd>Telescope buffers<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fd <cmd>Telescope file_browser path=%:p:h<cr>
+nnoremap <leader>fd <cmd>:Telescope file_browser path=%:p:h<cr>
 nnoremap <leader>fa <cmd>Telescope find_files hidden=true<cr>
-nnoremap <C-p> <cmd>Telescope git_files<cr>
-
-" NerdTree maps
-nnoremap <leader>n <cmd>NERDTree<cr>
+" TODO Fix this command - git files in buffer dir is broken
+" nnoremap <C-p> <cmd>Telescope git_files cwd=%:p<cr>
 
 " Set filetype for Jenkinsfiles
 au BufRead,BufNewFile Jenkinsfile setf groovy
+
+" Set omnifunc for go
+au FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc

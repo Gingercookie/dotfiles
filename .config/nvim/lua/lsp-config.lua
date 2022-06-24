@@ -1,17 +1,3 @@
--- Tree-shitter config
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "bash", "dockerfile", "go", "hcl", "html", "java", "json", "make", "markdown", "python", "regex", "vim", "yaml" },
-  sync_install = false,
-
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-}
-
--- Bufferline config
-require("bufferline").setup{}
-
 -- LSP Config
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
@@ -45,17 +31,3 @@ require('lspconfig')['gopls'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
-
--- Telescope config
-require("telescope").setup {
-  defaults = {
-    initial_mode = "normal"
-  },
-  extensions = {
-    file_browser = {
-      hijack_netrw = true,
-    },
-  },
-}
-require("telescope").load_extension "file_browser"
-
